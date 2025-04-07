@@ -1,18 +1,22 @@
 <#if nav_items?has_content>
-	<div class="ttu-breadcrumb-container">
-		<ul class="ttu-breadcrumb">
-			<#list nav_items as nav_item>
-				<#if nav_item_index == 0>
-					<li>
-						<a href="${nav_item.getURL()}" ${nav_item.getTarget()}>${nav_item.getName()}</a>
-					</li>
-				<#else>
-					<li>
-						<span class="divider">/</span>
-						<a href="${nav_item.getURL()}" ${nav_item.getTarget()}>${nav_item.getName()}</a>
-					</li>
-				</#if>
-			</#list>
-		</ul>
-	</div>
+	<ul class="ttu-nav-list">
+		<#list nav_items as nav_item>
+			<#assign
+				nav_item_attr_has_popup = ""
+				nav_item_css_class = ""
+			/>
+
+			<#if nav_item.isSelected()>
+				<#assign
+					nav_item_css_class = "selected"
+				/>
+			</#if>
+
+			<li class="${nav_item_css_class}">
+				<a href="${nav_item.getURL()}" ${nav_item.getTarget()}>
+					${nav_item.getName()}
+				</a>
+			</li>
+		</#list>
+	</ul>
 </#if>

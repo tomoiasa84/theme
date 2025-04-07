@@ -1,4 +1,4 @@
-/* TTU Raiderlink Theme - Basic Proof of Concept */
+/* TTU Raiderlink Theme - Updated to match screenshot */
 
 /* Variables */
 $ttu-red: #8C1D40;        /* Texas Tech dark red */
@@ -12,6 +12,8 @@ $ttu-link-blue: #0275d8;
 /* Reset some Liferay defaults */
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 #wrapper {
@@ -78,8 +80,9 @@ body {
   align-items: center;
 }
 
-.ttu-header-icon i {
-  font-size: 24px;
+.ttu-header-icon img {
+  height: 24px;
+  width: 24px;
   margin-bottom: 5px;
 }
 
@@ -97,7 +100,7 @@ body {
 /* Sidebar Navigation */
 #ttu-sidebar {
   background-color: $ttu-red;
-  width: 270px;
+  width: 230px;
   min-height: 100%;
   flex-shrink: 0;
 }
@@ -153,6 +156,22 @@ body {
   display: none;
 }
 
+/* Force removal of bullets in the sidebar navigation */
+#ttu-sidebar ul, 
+#ttu-sidebar li {
+  list-style-type: none !important;
+  list-style-image: none !important;
+  list-style-position: outside !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+#ttu-sidebar li::before,
+#ttu-sidebar li::marker {
+  content: none !important;
+  display: none !important;
+}
+
 /* Content Area */
 #content {
   flex: 1;
@@ -163,7 +182,8 @@ body {
 /* Breadcrumbs */
 .ttu-breadcrumbs {
   margin-bottom: 20px;
-  color: $ttu-dark-gray;
+  color: $ttu-link-blue;
+  font-size: 14px;
 }
 
 .ttu-breadcrumbs a {
@@ -189,6 +209,12 @@ body {
   padding: 10px 15px;
 }
 
+.portlet-title-text {
+  font-size: 18px;
+  font-weight: normal;
+  color: $ttu-dark-gray;
+}
+
 .portlet-content {
   background-color: $ttu-white;
   padding: 15px;
@@ -209,12 +235,14 @@ body {
   border-bottom: 1px solid $ttu-medium-gray;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .ttu-section-title {
   font-size: 18px;
   font-weight: normal;
   color: $ttu-dark-gray;
+  margin: 0;
 }
 
 .ttu-section-content {
@@ -241,10 +269,11 @@ body {
   text-decoration: underline;
 }
 
-/* Special icons */
-.ttu-icon:before {
-  content: "📋";
-  margin-right: 8px;
+.ttu-list li small {
+  display: block;
+  color: $ttu-dark-gray;
+  font-size: 12px;
+  margin-top: 2px;
 }
 
 /* Responsive */
@@ -276,87 +305,27 @@ body {
     justify-content: center;
   }
 }
-/* Additional CSS to remove bullets and fix styling */
 
-/* Force removal of bullets in the sidebar navigation */
-#ttu-sidebar li {
-  display: block !important;
-  list-style: none !important;
-  list-style-type: none !important;
-  list-style-image: none !important;
-  background-image: none !important;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
+/* Custom styling to match screenshot */
+h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
-#ttu-sidebar li::before {
-  content: none !important;
-  display: none !important;
+.portlet-layout {
+  margin-left: 0;
+  margin-right: 0;
 }
 
-#ttu-sidebar li::marker {
-  content: none !important;
-  display: none !important;
+.portlet-column {
+  padding-left: 0;
+  padding-right: 0;
 }
 
-#ttu-sidebar .ttu-nav-list {
-  margin: 0 !important;
-  padding: 0 !important;
+/* Match hamburger menu button styling */
+.hamburger-menu {
+  margin-left: 10px;
+  margin-right: 10px;
 }
-
-/* Fix header spacing and alignment */
-#ttu-header {
-  padding: 0 15px !important;
-}
-
-.ttu-logo {
-  display: flex !important;
-  align-items: center !important;
-}
-
-.ttu-logo img {
-  margin-right: 10px !important;
-}
-
-/* Fix breadcrumbs styling */
-.ttu-breadcrumbs {
-  padding: 8px 15px !important;
-  color: #2B7DB6 !important;
-  font-size: 14px !important;
-}
-
-.ttu-breadcrumbs a {
-  color: #2B7DB6 !important;
-}
-
-/* Content container adjustments */
-.ttu-content-container {
-  padding: 0 15px !important;
-}
-
-/* Fix portlet headers to match Texas Tech style */
-.portlet-topper, 
-.ttu-section-header {
-  background-color: #f5f5f5 !important;
-  border-bottom: 1px solid #ddd !important;
-  padding: 8px 15px !important;
-  font-weight: normal !important;
-}
-
-.portlet-topper .portlet-title-text, 
-.ttu-section-title {
-  font-weight: normal !important;
-  font-size: 18px !important;
-  color: #333 !important;
-}
-
-/* Override any Liferay bullets in the sidebar */
-#ttu-sidebar ul,
-#ttu-sidebar li,
-.ttu-nav-list,
-.ttu-nav-list li {
-  list-style-type: none !important;
-  list-style-image: none !important;
-  list-style-position: outside !important;
-}
-
