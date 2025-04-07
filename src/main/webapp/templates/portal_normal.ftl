@@ -41,6 +41,7 @@
 			align-items: center;
 			padding: 0;
 			margin: 0;
+			position: relative;
 		}
 		
 		/* Logo area */
@@ -98,6 +99,7 @@
 			background-color: #8C1D40; /* TTU maroon */
 			width: 230px;
 			flex-shrink: 0;
+			transition: transform 0.3s ease;
 		}
 		
 		#ttu-sidebar ul {
@@ -203,6 +205,105 @@
 			margin: 0;
 			padding: 0;
 		}
+		
+		/* Responsive styles */
+		@media (max-width: 768px) {
+			#ttu-sidebar {
+				position: fixed;
+				top: 70px;
+				bottom: 0;
+				left: 0;
+				z-index: 99;
+				transform: translateX(-100%); /* Hidden by default on mobile */
+			}
+			
+			/* Adjust header icons spacing for mobile */
+			.ttu-header-icons {
+				margin-right: 5px;
+			}
+			
+			.ttu-header-icon {
+				margin-left: 10px;
+				font-size: 10px;
+			}
+			
+			.ttu-header-icon img {
+				height: 20px;
+				width: 20px;
+			}
+		}
+		
+		/* Hamburger Menu */
+		.ttu-hamburger {
+			width: 30px;
+			height: 20px;
+			position: fixed;
+			top: 20px;
+			left: 20px;
+			z-index: 9999;
+			cursor: pointer;
+		}
+		
+		.ttu-hamburger span {
+			display: block;
+			position: absolute;
+			height: 3px;
+			width: 100%;
+			background: white;
+			border-radius: 3px;
+			opacity: 1;
+			left: 0;
+			transform: rotate(0deg);
+			transition: 0.25s ease-in-out;
+		}
+		
+		.ttu-hamburger span:nth-child(1) {
+			top: 0px;
+		}
+		
+		.ttu-hamburger span:nth-child(2) {
+			top: 8px;
+		}
+		
+		.ttu-hamburger span:nth-child(3) {
+			top: 16px;
+		}
+		
+		body.sidebar-open .ttu-hamburger span:nth-child(1) {
+			top: 8px;
+			transform: rotate(135deg);
+		}
+		
+		body.sidebar-open .ttu-hamburger span:nth-child(2) {
+			opacity: 0;
+			left: -60px;
+		}
+		
+		body.sidebar-open .ttu-hamburger span:nth-child(3) {
+			top: 8px;
+			transform: rotate(-135deg);
+		}
+		
+		/* Overlay */
+		.sidebar-overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0,0,0,0.5);
+			z-index: 98;
+		}
+		
+		body.sidebar-open .sidebar-overlay {
+			display: block;
+		}
+		
+		/* Sidebar open state */
+		body.sidebar-open #ttu-sidebar {
+			transform: translateX(0);
+		}
 	</style>
 </head>
 
@@ -211,6 +312,16 @@
 <@liferay_ui["quick-access"] contentId="#main-content" />
 
 <@liferay_util["include"] page=body_top_include />
+
+<!-- The hamburger menu fixed at the top left -->
+<div class="ttu-hamburger" id="ttu-hamburger">
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+
+<!-- The overlay when sidebar is open -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
 
 <@liferay.control_menu />
 
@@ -305,6 +416,45 @@
 
 <@liferay_util["include"] page=body_bottom_include />
 <@liferay_util["include"] page=bottom_include />
+
+<!-- JavaScript for hamburger menu functionality -->
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		// Get elements
+		const hamburger = document.getElementById('ttu-hamburger');
+		const overlay = document.getElementById('sidebar-overlay');
+		const body = document.body;
+		
+		// Function to check if we're on mobile
+		function isMobile() {
+			return window.innerWidth <= 768;
+		}
+		
+		// Set initial state
+		function setInitialState() {
+			if (isMobile()) {
+				body.classList.remove('sidebar-open');
+			} else {
+				body.classList.add('sidebar-open');
+			}
+		}
+		
+		// Toggle sidebar
+		function toggleSidebar() {
+			body.classList.toggle('sidebar-open');
+		}
+		
+		// Add event listeners
+		hamburger.addEventListener('click', toggleSidebar);
+		overlay.addEventListener('click', toggleSidebar);
+		
+		// Handle resize
+		window.addEventListener('resize', setInitialState);
+		
+		// Set initial state
+		setInitialState();
+	});
+</script>
 
 </body>
 </html>
