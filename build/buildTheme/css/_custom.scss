@@ -1,0 +1,331 @@
+/* TTU Raiderlink Theme - Updated to match screenshot */
+
+/* Variables */
+$ttu-red: #8C1D40;        /* Texas Tech dark red */
+$ttu-black: #000000;
+$ttu-white: #ffffff;
+$ttu-light-gray: #f5f5f5;
+$ttu-medium-gray: #e5e5e5;
+$ttu-dark-gray: #333333;
+$ttu-link-blue: #0275d8;
+
+/* Reset some Liferay defaults */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.portlet {
+  margin-bottom: 20px;
+}
+
+/* Adjust for admin controls */
+.has-control-menu #wrapper {
+  margin-top: 56px;
+}
+
+/* Header */
+#banner {
+  background-color: $ttu-black;
+  margin: 0;
+  padding: 0;
+  border: none;
+  position: relative;
+  z-index: 100;
+}
+
+#ttu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 20px;
+}
+
+.ttu-logo {
+  display: flex;
+  align-items: center;
+}
+
+.ttu-logo img {
+  height: 45px;
+  width: auto;
+}
+
+.site-name {
+  color: $ttu-white;
+  font-size: 24px;
+  font-weight: normal;
+  margin-left: 10px;
+}
+
+.ttu-header-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.ttu-header-icon {
+  color: $ttu-white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ttu-header-icon img {
+  height: 24px;
+  width: 24px;
+  margin-bottom: 5px;
+}
+
+.ttu-header-icon:hover {
+  text-decoration: none;
+  color: $ttu-light-gray;
+}
+
+/* Main Container */
+.ttu-container {
+  display: flex;
+  min-height: calc(100vh - 70px);
+}
+
+/* Sidebar Navigation */
+#ttu-sidebar {
+  background-color: $ttu-red;
+  width: 230px;
+  min-height: 100%;
+  flex-shrink: 0;
+}
+
+/* Style Liferay navigation menu */
+#ttu-sidebar .portlet {
+  margin-bottom: 0;
+}
+
+#ttu-sidebar .portlet-content {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+#ttu-sidebar .portlet-body {
+  background-color: transparent;
+}
+
+#ttu-sidebar .navbar {
+  background-color: transparent;
+}
+
+#ttu-sidebar .navbar-nav {
+  width: 100%;
+}
+
+#ttu-sidebar .nav-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#ttu-sidebar .nav-link {
+  display: block;
+  padding: 12px 20px;
+  color: $ttu-white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+#ttu-sidebar .nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: $ttu-white;
+}
+
+#ttu-sidebar .active .nav-link {
+  background-color: rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
+
+/* Hide portlet decoration in sidebar */
+#ttu-sidebar .portlet-topper {
+  display: none;
+}
+
+/* Force removal of bullets in the sidebar navigation */
+#ttu-sidebar ul, 
+#ttu-sidebar li {
+  list-style-type: none !important;
+  list-style-image: none !important;
+  list-style-position: outside !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+#ttu-sidebar li::before,
+#ttu-sidebar li::marker {
+  content: none !important;
+  display: none !important;
+}
+
+/* Content Area */
+#content {
+  flex: 1;
+  padding: 20px;
+  background-color: $ttu-light-gray;
+}
+
+/* Breadcrumbs */
+.ttu-breadcrumbs {
+  margin-bottom: 20px;
+  color: $ttu-link-blue;
+  font-size: 14px;
+}
+
+.ttu-breadcrumbs a {
+  color: $ttu-link-blue;
+  text-decoration: none;
+}
+
+.ttu-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+/* Content Container */
+.ttu-content-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Portlet styling */
+.portlet-topper {
+  background-color: $ttu-light-gray;
+  border-bottom: 1px solid $ttu-medium-gray;
+  padding: 10px 15px;
+}
+
+.portlet-title-text {
+  font-size: 18px;
+  font-weight: normal;
+  color: $ttu-dark-gray;
+}
+
+.portlet-content {
+  background-color: $ttu-white;
+  padding: 15px;
+  border: 1px solid $ttu-medium-gray;
+  border-top: none;
+}
+
+/* Section styling */
+.ttu-section {
+  margin-bottom: 20px;
+  background-color: $ttu-white;
+  border: 1px solid $ttu-medium-gray;
+}
+
+.ttu-section-header {
+  padding: 10px 15px;
+  background-color: $ttu-light-gray;
+  border-bottom: 1px solid $ttu-medium-gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ttu-section-title {
+  font-size: 18px;
+  font-weight: normal;
+  color: $ttu-dark-gray;
+  margin: 0;
+}
+
+.ttu-section-content {
+  padding: 15px;
+}
+
+/* Lists */
+.ttu-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.ttu-list li {
+  margin-bottom: 10px;
+}
+
+.ttu-list li a {
+  color: $ttu-link-blue;
+  text-decoration: none;
+}
+
+.ttu-list li a:hover {
+  text-decoration: underline;
+}
+
+.ttu-list li small {
+  display: block;
+  color: $ttu-dark-gray;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .ttu-content-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .ttu-container {
+    flex-direction: column;
+  }
+  
+  #ttu-sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+  
+  #ttu-header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  
+  .ttu-header-icons {
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Custom styling to match screenshot */
+h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.portlet-layout {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.portlet-column {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Match hamburger menu button styling */
+.hamburger-menu {
+  margin-left: 10px;
+  margin-right: 10px;
+}
